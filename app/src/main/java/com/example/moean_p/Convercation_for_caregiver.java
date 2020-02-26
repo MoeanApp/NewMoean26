@@ -1,0 +1,168 @@
+package com.example.moean_p;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.moean_p.Fragment.ChatsFragment;
+import com.example.moean_p.Fragment.UsersFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class Convercation_for_caregiver extends AppCompatActivity {
+
+    NavigationView navigationView;
+
+    ActionBarDrawerToggle toggle;
+    Intent intent2;
+    CircleImageView profile_img;
+    TextView username;
+
+    FirebaseUser firebaseUser;
+
+    DatabaseReference referance;
+
+
+    BottomNavigationView bottomNavigationView;
+
+
+
+    converAdapter adapter;
+
+    private DrawerLayout drawer;
+
+    private static final String TAG = "activity_convercation";
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_convercation_for_caregiver);
+
+
+        Toolbar toolbar=findViewById(R.id.tool_bar2);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        profile_img = findViewById(R.id.profile_image2);
+        username = findViewById(R.id.username2);
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        referance = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+        referance.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                username.setText(user.getFname());
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        TabLayout tabLayout=findViewById(R.id.tab_layout2);
+        ViewPager viewPager=findViewById(R.id.View_pager2);
+
+        ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
+
+        viewPagerAdapter.addFragment(new ChatsFragment(),"المحادثات");
+         viewPagerAdapter.addFragment(new UsersFragment(),"الإستشاريين");
+
+        viewPager.setAdapter(viewPagerAdapter);
+
+        tabLayout.setupWithViewPager(viewPager);
+
+
+
+
+        // toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        // drawer.addDrawerListener(toggle);
+        // toggle.syncState();
+
+
+
+
+    }
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+
+        private ArrayList<Fragment>fragments;
+        private ArrayList<String> titles;
+
+
+
+        public ViewPagerAdapter(@NonNull FragmentManager fm) {
+            super(fm);
+            this.fragments=new ArrayList<>();
+            this.titles=new ArrayList<>();
+
+        }
+
+        public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+            super(fm, behavior);
+        }
+
+        @NonNull
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+
+
+        public void addFragment(Fragment fragment,String title){
+            fragments.add(fragment);
+            titles.add(title);
+        }
+
+        @Nullable
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles.get(position);
+        }
+    }
+
+
+
+
+}
