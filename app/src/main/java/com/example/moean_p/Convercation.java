@@ -5,25 +5,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.moean_p.Fragment.ChatsFragment;
-import com.example.moean_p.Fragment.UsersFragment;
+import com.example.moean_p.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -87,7 +81,7 @@ public class Convercation extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                username.setText(user.Fname);
+                username.setText(user.getFname());
 
 
             }
@@ -103,7 +97,7 @@ public class Convercation extends AppCompatActivity {
 
         viewPagerAdapter viewPagerAdapter=new viewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new ChatsFragment(),"المحادثات");
+        //viewPagerAdapter.addFragment(new ChatsFragment(),"المحادثات");
        // viewPagerAdapter.addFragment(new UsersFragment(),"");
 
         viewPager.setAdapter(viewPagerAdapter);

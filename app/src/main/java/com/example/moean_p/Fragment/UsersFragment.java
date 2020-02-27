@@ -2,7 +2,9 @@ package com.example.moean_p.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -10,9 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.example.moean_p.Adapter.UserAdapter;
 import com.example.moean_p.R;
-import com.example.moean_p.User;
+import com.example.moean_p.Model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,23 +42,25 @@ public class UsersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-       /* View view=inflater.inflate(R.layout.fragment_users, container, false);
+        View view=inflater.inflate(R.layout.fragment_users, container, false);
         recyclerView = view.findViewById(R.id.recycler_view_users);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mUsers = new ArrayList<>();
+        readUsers();
 
-        */
+
 
 
        // readUsers();
 
-        return inflater.inflate(R.layout.fragment_users, container, false);
+        return view;
 
 
     }
-/*
+
+
     private void readUsers() {
 
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -67,7 +80,7 @@ public class UsersFragment extends Fragment {
                     }
 
                 }
-                userAdapter = new UserAdapter(getContext(), mUsers);
+                UserAdapter userAdapter = new UserAdapter(getContext(), mUsers);
                 recyclerView.setAdapter(userAdapter);
             }
 
@@ -79,7 +92,7 @@ public class UsersFragment extends Fragment {
 
     }
 
- */
+
 
 
 }

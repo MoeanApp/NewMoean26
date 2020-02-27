@@ -9,17 +9,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.moean_p.Fragment.ChatsFragment;
 import com.example.moean_p.Fragment.UsersFragment;
+import com.example.moean_p.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -57,7 +55,7 @@ public class Convercation_for_caregiver extends AppCompatActivity {
 
     private DrawerLayout drawer;
 
-    private static final String TAG = "activity_convercation";
+    private static final String TAG = "activity_convercation_for_caregiver";
 
 
     @Override
@@ -71,9 +69,12 @@ public class Convercation_for_caregiver extends AppCompatActivity {
         setContentView(R.layout.activity_convercation_for_caregiver);
 
 
-        Toolbar toolbar=findViewById(R.id.tool_bar2);
+
+
+
+        Toolbar toolbar = findViewById(R.id.tool_bar2);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
 
         profile_img = findViewById(R.id.profile_image2);
@@ -87,6 +88,8 @@ public class Convercation_for_caregiver extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 username.setText(user.getFname());
+
+   // profile_img.setImageResource(R.drawable.user);
 
 
             }
@@ -102,8 +105,9 @@ public class Convercation_for_caregiver extends AppCompatActivity {
 
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
 
+
+        viewPagerAdapter.addFragment(new UsersFragment(),"الإستشاريين");
         viewPagerAdapter.addFragment(new ChatsFragment(),"المحادثات");
-         viewPagerAdapter.addFragment(new UsersFragment(),"الإستشاريين");
 
         viewPager.setAdapter(viewPagerAdapter);
 

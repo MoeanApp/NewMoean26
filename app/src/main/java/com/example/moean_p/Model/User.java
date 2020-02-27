@@ -1,7 +1,7 @@
-package com.example.moean_p;
+package com.example.moean_p.Model;
 
 public class User {
-    public String Fname, Lastname, role,Email,Password,uid;
+    private String Fname, Lastname, role,Email,Password,uid;
 
     public User(){
 
@@ -39,6 +39,8 @@ public class User {
     public String getPassword() {
         return Password;
     }
+
+
 
 
 

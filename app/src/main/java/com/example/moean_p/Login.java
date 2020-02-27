@@ -27,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 public class Login extends AppCompatActivity {
     EditText mEmail, mPassword;
     Button mLoginBtn;
@@ -75,18 +74,18 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
 
-                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
+/*
                             String g = FirebaseDatabase.getInstance().getReference("Users")
                              .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).toString();
                             String uidd = g.substring(41);
-                         checRole(uidd);
+                         checRole(uidd);*/
 
                             Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),WhoIsMoeanCaregiver.class));
                             //  onAuthSuccess(task.getResult().getUser());
 
 
@@ -147,47 +146,40 @@ public class Login extends AppCompatActivity {
             }
         });
 
-    }
 
 
 
-
-    private void checRole(String uidd) {
+   /* private void checRole(String uidd) {
         DatabaseReference mDatabase;
-
+// ...
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Users").child(uidd).addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         User u = dataSnapshot.getValue(User.class);
-                        String g = u.role;
+                     String  g = u.role;
+                        //   String ola="advisor";
+                        if(g=="advisor"){
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
 
 
-                        String r="advisor";
-                        String c="caregiver";
 
-                        if (g .equals(r) ) {
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
-                        }
-                        else if (g.equals(c)){
-                            startActivity(new Intent(getApplicationContext(), WhoIsMoeanCaregiver.class));
-
-                        }
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        Toast.makeText(Login.this, g, Toast.LENGTH_SHORT).show();}
 
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
 
 
-                });
 
-        //}
-        // );
+                }*/
+
+    }
+    // );
 
        /* private void onAuthSuccess (FirebaseUser user){
 
@@ -218,5 +210,31 @@ public class Login extends AppCompatActivity {
 
 
     }*/
+      /* private void checRole(String uidd) {
+           DatabaseReference mDatabase;
+// ...
+           mDatabase = FirebaseDatabase.getInstance().getReference();
+           mDatabase.child("Users").child(uidd).addListenerForSingleValueEvent(
+                   new ValueEventListener() {
+                       @Override
+                       public void onDataChange(DataSnapshot dataSnapshot) {
+                           User u = dataSnapshot.getValue(User.class);
+                           String  g = u.role;
+                           //   String ola="advisor";
+                           if(g=="advisor"){
 
-    }}
+
+
+
+                               startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                               Toast.makeText(Login.this, g, Toast.LENGTH_SHORT).show();}
+
+                       }
+                       @Override
+                       public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                       }
+
+                   });}*/
+
+}
