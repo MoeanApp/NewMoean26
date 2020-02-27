@@ -36,7 +36,7 @@ public class UserAdapter extends  RecyclerView.Adapter<UserAdapter.ViewHolder>{
         final User user = mUsers.get(position);
 
 
-        holder.username1.setText(user.getuid());
+        holder.username1.setText(user.getfirstName());
         holder.major.setText(user.getRole());
         //holder.profile_image.setImageResource(R.drawable.user);
 

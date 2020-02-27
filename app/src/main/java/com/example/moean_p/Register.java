@@ -38,7 +38,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
         mlastName = findViewById(R.id.LastName);
-
         mrole = findViewById(R.id.Role);
 
         progressBar = findViewById(R.id.ProgressBar);
@@ -62,7 +61,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             //handle the already login user
         }
     }
-    private void registerUser() { final String email = mEmail.getText().toString().trim();
+    private void registerUser() {
+        final String email = mEmail.getText().toString().trim();
         final String password = mPassword.getText().toString().trim();
         final String firstName = mfirstName.getText().toString().trim();
         final String lastName = mlastName.getText().toString().trim();
@@ -97,6 +97,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
 
 String g;
+
                 g = FirebaseDatabase.getInstance().getReference("Users")
                                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).toString();
                 String uid=g.substring(41);

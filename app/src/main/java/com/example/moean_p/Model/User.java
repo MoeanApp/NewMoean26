@@ -1,13 +1,13 @@
 package com.example.moean_p.Model;
 
 public class User {
-    private String Fname, Lastname, role,Email,Password,uid;
+    private String firstName, Lastname, role,Email,Password,uid;
 
     public User(){
 
     }
-    public User(String Fname, String Lastname, String role, String Email, String Password, String uid) {
-        this.Fname = Fname;
+    public User(String firstName, String Lastname, String role, String Email, String Password, String uid) {
+        this.firstName = firstName;
         this.Lastname = Lastname;
         this.role = role;
         this.Email=Email;
@@ -24,8 +24,8 @@ public class User {
 
 
 
-    public String getFname() {
-        return Fname;
+    public String getfirstName() {
+        return firstName;
     }
 
     public String getLastname() {
