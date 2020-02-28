@@ -150,10 +150,7 @@ public class Videos extends AppCompatActivity implements VideoAdapter.onItemClic
                     profile();
                     return true;
                 }
-                if (menuItem.getItemId() == R.id.nav_consult) {
-                    consulting();
-                    return true;
-                }
+
 
                 if (menuItem.getItemId() == R.id.nav_video) {
                     videos();

@@ -38,5 +38,10 @@
         android:textColor="#5783db"
         android:textSize="14sp"/>
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_keyboard_arrow_left_black_24dp"/>
+
 
 </RelativeLayout>

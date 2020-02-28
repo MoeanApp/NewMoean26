@@ -61,15 +61,17 @@ public class location extends AppCompatActivity {
                 else if(menuItem.getItemId()==R.id.nav_who_is_moean2){
                     Whoismoean();
                     return true;
-                }
-                else if(menuItem.getItemId()==R.id.nav_progress){
-                    progress();
-                    return true;
+
+
 
                 }else if (menuItem.getItemId()==R.id.nav_video2){
                     videos();
                     return true;
                 }
+                else if(menuItem.getItemId()==R.id.nav_advising){
+                    consult();
+                }
+
 
 
 
@@ -86,9 +88,7 @@ public class location extends AppCompatActivity {
                 if(menuItem.getItemId()==R.id.nav_location){
                     Locaion();
                 }
-                if(menuItem.getItemId()==R.id.nav_consult){
-                    consult();
-                }
+
             }
         });
 
@@ -109,10 +109,7 @@ public class location extends AppCompatActivity {
 
     }
 
-    public void progress(){
-        intent2=new Intent(this,mile.class);
-        startActivity(intent2);
-    }
+
 
     public void consult(){
         intent2=new Intent(this,Convercation_for_caregiver.class);

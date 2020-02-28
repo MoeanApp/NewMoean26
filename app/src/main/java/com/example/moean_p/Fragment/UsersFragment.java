@@ -75,9 +75,8 @@ public class UsersFragment extends Fragment {
 
                     assert user != null;
                     assert firebaseUser != null;
-                    if (!user.getuid().equals(firebaseUser.getUid()) && user.getRole().equals("advisor")) {
                         mUsers.add(user);
-                    }
+
 
                 }
                 UserAdapter userAdapter = new UserAdapter(getContext(), mUsers);

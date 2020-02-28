@@ -139,15 +139,15 @@ public class childprofile extends AppCompatActivity {
 
                     return true;
                 }
+                else if(menuItem.getItemId()==R.id.nav_advising){
+                    consult();
+                }
+
                 else if(menuItem.getItemId()==R.id.nav_who_is_moean2){
                     Whoismoean();
                     return true;
                 }
-                else if(menuItem.getItemId()==R.id.nav_progress){
-                    progress();
-                    return true;
 
-                }
 
 
 
@@ -165,9 +165,7 @@ public class childprofile extends AppCompatActivity {
                 if(menuItem.getItemId()==R.id.nav_location){
                     Locaion();
                 }
-                if(menuItem.getItemId()==R.id.nav_consult){
-                    consult();
-                }
+
             }
         });
 
@@ -233,10 +231,7 @@ public class childprofile extends AppCompatActivity {
 
     }
 
-    public void progress(){
-        intent2=new Intent(this,mile.class);
-        startActivity(intent2);
-    }
+
 
     public void Locaion(){
         intent2=new Intent(this,location.class);

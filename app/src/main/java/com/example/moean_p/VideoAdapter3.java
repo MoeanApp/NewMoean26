@@ -17,7 +17,7 @@ public class VideoAdapter3 extends RecyclerView.Adapter<VideoAdapter3.ViewHolder
     private List<VideoAdapter2> mUploads ;
 
     private Context mContext;
-    private VideoAdapter.onItemClickListener mListener;
+    private onItemClickListener mListener;
 
     public VideoAdapter3(Context context,List<VideoAdapter2> uploads) {
         mUploads = uploads;
@@ -41,7 +41,7 @@ public class VideoAdapter3 extends RecyclerView.Adapter<VideoAdapter3.ViewHolder
         return mUploads.size();
     }
 
-    public class ViewHolder3 extends RecyclerView.ViewHolder{
+    public class ViewHolder3 extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView VideoName;
         public VideoView videoView;
         public  TextView advisorName;
@@ -50,8 +50,32 @@ public class VideoAdapter3 extends RecyclerView.Adapter<VideoAdapter3.ViewHolder
             super(itemView);
             VideoName=itemView.findViewById(R.id.video_name);
             //videoView=itemView.findViewById(R.id.advisor_name);
-            //advisorName=itemView.findViewById(R.id.advisor_name);
+            advisorName=itemView.findViewById(R.id.advisor_name);
+
+            itemView.setOnClickListener(this);
 
         }
+
+        @Override
+        public void onClick(View v) {
+            if (mListener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    mListener.onItemClick(position);
+                }
+            }
+        }
+
+
+
+        }
+    public interface onItemClickListener {
+        void onItemClick(int position);
+
+    }
+
+    public void setOnItemClickListener( onItemClickListener listener) {
+        mListener = listener;
+
     }
 }

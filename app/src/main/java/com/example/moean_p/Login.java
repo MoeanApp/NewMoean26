@@ -74,7 +74,7 @@ public class Login extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
 
 
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
@@ -84,8 +84,9 @@ public class Login extends AppCompatActivity {
                             String uidd = g.substring(41);
                          checRole(uidd);*/
 
-                            Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),WhoIsMoeanCaregiver.class));
+
+                                    Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), WhoIsMoeanCaregiver.class));
                             //  onAuthSuccess(task.getResult().getUser());
 
 

@@ -1,6 +1,7 @@
 package com.example.moean_p.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moean_p.MessageActivity;
 import com.example.moean_p.Model.User;
 import com.example.moean_p.R;
 
@@ -40,6 +42,14 @@ public class UserAdapter extends  RecyclerView.Adapter<UserAdapter.ViewHolder>{
         holder.major.setText(user.getRole());
         //holder.profile_image.setImageResource(R.drawable.user);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, MessageActivity.class);
+                intent.putExtra("userid", user.getuid());
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 

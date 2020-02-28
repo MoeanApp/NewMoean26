@@ -14,24 +14,23 @@
             android:id="@+id/nav_profile2"
             android:icon="@drawable/user"
             android:title="صفحة الطفل الشخصية" />
-        <item
-            android:id="@+id/nav_consult"
-            android:icon="@drawable/chat_bubble_24dp"
-            android:title="الإستشارات" />
 
 
-        <item
-            android:id="@+id/nav_progress"
-            android:icon="@drawable/knowledge"
-            android:title="مستوى تقدم الطفل"
 
-            />
+
 
         <item
             android:id="@+id/nav_video2"
             android:icon="@drawable/view_video_black_24dp"
             android:title="مقاطع الفديو"
 
+            />
+
+        <item
+
+            android:id="@+id/nav_advising"
+            android:icon="@drawable/chat_bubble_24dp"
+            android:title="الإستشارات"
             />
 
         <item

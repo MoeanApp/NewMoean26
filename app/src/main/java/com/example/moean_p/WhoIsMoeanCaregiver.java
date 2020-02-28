@@ -57,23 +57,20 @@ public class WhoIsMoeanCaregiver extends AppCompatActivity {
                 if(menuItem.getItemId()==R.id.nav_profile2){
                     profile();
                     return true;
-                }else
-                if(menuItem.getItemId()==R.id.nav_consult) {
-                    consult();
-
-                    return true;
                 }
+
                 else if(menuItem.getItemId()==R.id.nav_who_is_moean2){
                     Whoismoean();
                     return true;
                 }
-                else if(menuItem.getItemId()==R.id.nav_progress){
-                    progress();
-                    return true;
 
-                }else if (menuItem.getItemId()==R.id.nav_video2){
+
+                else if (menuItem.getItemId()==R.id.nav_video2){
                     videos();
                     return true;
+                }
+                else if(menuItem.getItemId()==R.id.nav_advising){
+                    consult();
                 }
 
 
@@ -90,9 +87,7 @@ public class WhoIsMoeanCaregiver extends AppCompatActivity {
               if(menuItem.getItemId()==R.id.nav_location){
                   Locaion();
               }
-              if(menuItem.getItemId()==R.id.nav_consult){
-                  consult();
-              }
+
           }
       });
 
@@ -134,9 +129,6 @@ public class WhoIsMoeanCaregiver extends AppCompatActivity {
 
     }
 
-    public void progress(){
-        intent2=new Intent(this,mile.class);
-        startActivity(intent2);
-    }
+
 
 }

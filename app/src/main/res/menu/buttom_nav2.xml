@@ -4,12 +4,7 @@
     >
 
 
-    <item
 
-        android:id="@+id/nav_advising"
-        android:icon="@drawable/chat_bubble_24dp"
-        android:title="الإستشارات"
-        />
 
 
     <item
