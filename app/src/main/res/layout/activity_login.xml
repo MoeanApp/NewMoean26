@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
+
+
+
     <EditText
         android:id="@+id/Email"
         android:layout_width="wrap_content"
@@ -13,7 +16,7 @@
         android:layout_marginBottom="416dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Email"
+        android:hint="البريد الإلكتروني"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -25,7 +28,7 @@
         android:layout_marginBottom="324dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Password"
+android:hint="كلمة المرور"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

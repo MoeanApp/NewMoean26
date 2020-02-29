@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -165,7 +166,6 @@ public class Convercation_for_caregiver extends AppCompatActivity {
             return titles.get(position);
         }
     }
-
 
 
 

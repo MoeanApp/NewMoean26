@@ -7,13 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login_or_signin extends AppCompatActivity {
 
-    Button regiter,login;
+    Button login;
+    TextView regiter;
     Intent intent;
     Toolbar toolbar;
     FirebaseUser firebaseUser;

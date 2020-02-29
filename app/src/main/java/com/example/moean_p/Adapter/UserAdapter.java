@@ -21,10 +21,13 @@ public class UserAdapter extends  RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
     private Context mContext;
     private List<User> mUsers;
+    private boolean ischat;
 
-    public UserAdapter(Context mContext, List<User> mUsers){
+
+    public UserAdapter(Context mContext, List<User> mUsers, boolean ischat){
         this.mUsers = mUsers;
         this.mContext = mContext;
+        this.ischat = ischat;
     }
 
     @NonNull
@@ -41,6 +44,8 @@ public class UserAdapter extends  RecyclerView.Adapter<UserAdapter.ViewHolder>{
         holder.username1.setText(user.getfirstName());
         holder.major.setText(user.getRole());
         //holder.profile_image.setImageResource(R.drawable.user);
+
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,12 +68,12 @@ public class UserAdapter extends  RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
         public TextView username1,major;
         public ImageView profile_image;
-        /*
-        private ImageView img_on;
-        private ImageView img_off;
-        private TextView last_msg;
 
-         */
+        private ImageView img_on;
+        //private ImageView img_off;
+       // private TextView last_msg;
+
+
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -76,12 +81,12 @@ public class UserAdapter extends  RecyclerView.Adapter<UserAdapter.ViewHolder>{
             username1 = itemView.findViewById(R.id.username_advisor);
             profile_image = itemView.findViewById(R.id.profile_image2);
             major=itemView.findViewById(R.id.major);
-            /*
-            img_on = itemView.findViewById(R.id.img_on);
-            img_off = itemView.findViewById(R.id.img_off);
-            last_msg = itemView.findViewById(R.id.last_msg);
 
-             */
+           // img_on = itemView.findViewById(R.id.img_on);
+           // img_off = itemView.findViewById(R.id.img_off);
+            //last_msg = itemView.findViewById(R.id.last_msg);
+
+
         }
     }
 

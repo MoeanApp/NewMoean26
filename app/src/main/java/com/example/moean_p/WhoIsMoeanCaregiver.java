@@ -16,6 +16,7 @@ import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class WhoIsMoeanCaregiver extends AppCompatActivity {
 
@@ -23,9 +24,10 @@ public class WhoIsMoeanCaregiver extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     BottomNavigationView bottomNavigationView;
     NavigationView navigationView;
+    FirebaseAuth firebaseAuth;
     Intent intent2;
     Button b1;
-    private static final String TAG="WhoIsMoeanCaregiver";
+    private static final String TAG = "WhoIsMoeanCaregiver";
 
 
     @Override
@@ -34,101 +36,99 @@ public class WhoIsMoeanCaregiver extends AppCompatActivity {
         setContentView(R.layout.activity_who_is_moean_caregiver2);
 
 
-        Toolbar toolbar=findViewById(R.id.tool_bar2);
+        Toolbar toolbar = findViewById(R.id.tool_bar2);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.caregiver_layout);
 
-        toggle=new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close);
 
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        Log.d(TAG,"onCreate:started");
+        Log.d(TAG, "onCreate:started");
 
 
+        navigationView = findViewById(R.id.nav_drawer2);
 
-
-        navigationView=findViewById(R.id.nav_drawer2);
-
-      navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if(menuItem.getItemId()==R.id.nav_profile2){
+                if (menuItem.getItemId() == R.id.nav_profile2) {
                     profile();
                     return true;
-                }
-
-                else if(menuItem.getItemId()==R.id.nav_who_is_moean2){
+                } else if (menuItem.getItemId() == R.id.nav_who_is_moean2) {
                     Whoismoean();
                     return true;
-                }
-
-
-                else if (menuItem.getItemId()==R.id.nav_video2){
+                } else if (menuItem.getItemId() == R.id.nav_video2) {
                     videos();
                     return true;
-                }
-                else if(menuItem.getItemId()==R.id.nav_advising){
+                } else if (menuItem.getItemId() == R.id.nav_advising) {
                     consult();
+                } else if (menuItem.getItemId() == R.id.nav_signout2){
+                    signout();
+return true;
                 }
-
-
 
 
                 return false;
             }
         });
 
-      bottomNavigationView=findViewById(R.id.bottom2_nav);
-      bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
-          @Override
-          public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
-              if(menuItem.getItemId()==R.id.nav_location){
-                  Locaion();
-              }
+        bottomNavigationView = findViewById(R.id.bottom2_nav);
+        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.nav_location) {
+                    Locaion();
+                }
 
-          }
-      });
-
-
-
+            }
+        });
 
 
     }
-    public void twitter(View view){
-        Intent twitterintent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/MoeanApp"));
+
+    public void twitter(View view) {
+        Intent twitterintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/MoeanApp"));
         startActivity(twitterintent);
     }
 
-    public void profile(){
-        intent2=new Intent(this,childprofile.class);
+    public void profile() {
+        intent2 = new Intent(this, childprofile.class);
         startActivity(intent2);
 
     }
 
-    public void consult(){
-        intent2=new Intent(this,Convercation_for_caregiver.class);
-        startActivity(intent2);
-
-    }
-    public void Whoismoean(){
-        intent2=new Intent(this,WhoIsMoeanCaregiver.class);
+    public void consult() {
+        intent2 = new Intent(this, Convercation_for_caregiver.class);
         startActivity(intent2);
 
     }
 
-    public void Locaion(){
-        intent2=new Intent(this,location.class);
-        startActivity(intent2);
-    }
-
-    public void videos(){
-        intent2=new Intent(this,videoscare.class);
+    public void Whoismoean() {
+        intent2 = new Intent(this, WhoIsMoeanCaregiver.class);
         startActivity(intent2);
 
     }
 
+    public void Locaion() {
+        intent2 = new Intent(this, location.class);
+        startActivity(intent2);
+    }
+
+    public void videos() {
+        intent2 = new Intent(this, videoscare.class);
+        startActivity(intent2);
+
+    }
+
+    public void signout(){
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(WhoIsMoeanCaregiver.this,Login_or_signin.class)
+        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+    }
 
 
 }

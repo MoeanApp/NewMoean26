@@ -67,6 +67,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         final String firstName = mfirstName.getText().toString().trim();
         final String lastName = mlastName.getText().toString().trim();
         final String role = mrole.getText().toString().trim();
+        final String status;
 
         if (TextUtils.isEmpty(email)) {
             mEmail.setError("Email is Required.");
@@ -113,6 +114,7 @@ String g;
                                 email,
                                 password,
                                 uid
+
 
                         );
 
