@@ -75,14 +75,17 @@ public class videoscare extends AppCompatActivity implements VideoAdapter3.onIte
 
 
         recycleView = findViewById(R.id.recycler_view_care_videos);
-        videoView = findViewById(R.id.video_view_upload);
+        videoView=findViewById(R.id.video_view);
         recycleView.setHasFixedSize(true);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
 
 
         mUploads = new ArrayList<>();
+
         adapter = new VideoAdapter3(videoscare.this, mUploads);
         recycleView.setAdapter(adapter);
+        adapter.setOnItemClickListener(videoscare.this);
+
 
         storage=FirebaseStorage.getInstance();
 
@@ -90,22 +93,23 @@ public class videoscare extends AppCompatActivity implements VideoAdapter3.onIte
 
         databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
 
-        mDBListener=databaseReference.addValueEventListener(new ValueEventListener() {
+        mDBListener= databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUploads.clear();
-
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     upload = postSnapshot.getValue(VideoAdapter2.class);
                     upload.setmKey(postSnapshot.getKey());
                     mUploads.add(upload);
                     ListOfURIVideos.add(upload.getVideoUrl());
-
                 }
+
+
                 adapter.notifyDataSetChanged();
 
 
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -114,9 +118,8 @@ public class videoscare extends AppCompatActivity implements VideoAdapter3.onIte
         });
 
 
-        videoView = findViewById(R.id.video_view_upload);
+        //videoView = findViewById(R.id.video_view_upload);
 
-        mUploads = new ArrayList<>();
 
 
         drawer = findViewById(R.id.vid);
@@ -203,10 +206,13 @@ public class videoscare extends AppCompatActivity implements VideoAdapter3.onIte
     public void onItemClick(int position) {
         position1=position;
 
-        Intent intent=new Intent(this,Video_Play.class);
+        Intent intent=new Intent(this,Video_Play_Caregiver.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

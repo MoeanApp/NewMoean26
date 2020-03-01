@@ -98,6 +98,7 @@ public class Videos extends AppCompatActivity implements VideoAdapter.onItemClic
         b2=findViewById(R.id.add);
 
         mUploads = new ArrayList<>();
+
         adapter = new VideoAdapter(Videos.this, mUploads);
         recycleView.setAdapter(adapter);
         adapter.setOnItemClickListener(Videos.this);

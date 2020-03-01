@@ -49,8 +49,7 @@ public class VideoAdapter3 extends RecyclerView.Adapter<VideoAdapter3.ViewHolder
         public ViewHolder3(@NonNull View itemView) {
             super(itemView);
             VideoName=itemView.findViewById(R.id.video_name);
-            //videoView=itemView.findViewById(R.id.advisor_name);
-            advisorName=itemView.findViewById(R.id.advisor_name);
+
 
             itemView.setOnClickListener(this);
 

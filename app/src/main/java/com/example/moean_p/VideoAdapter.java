@@ -71,7 +71,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             super(itemView);
 
             VideoName = itemView.findViewById(R.id.video_name);
-            videoView = itemView.findViewById(R.id.video_view_upload);
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
 

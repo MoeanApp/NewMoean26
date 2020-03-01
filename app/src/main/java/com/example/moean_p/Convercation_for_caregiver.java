@@ -69,10 +69,6 @@ public class Convercation_for_caregiver extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_convercation_for_caregiver);
 
-
-
-
-
         Toolbar toolbar = findViewById(R.id.tool_bar2);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -117,9 +113,7 @@ public class Convercation_for_caregiver extends AppCompatActivity {
 
 
 
-        // toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-        // drawer.addDrawerListener(toggle);
-        // toggle.syncState();
+
 
 
 

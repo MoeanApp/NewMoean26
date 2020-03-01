@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.moean_p.Fragment.ChatsFragment;
 import com.example.moean_p.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -68,8 +69,8 @@ public class Convercation extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
-        //drawer=findViewById(R.id.drawer4_layout);
 
         profile_img = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
@@ -97,8 +98,7 @@ public class Convercation extends AppCompatActivity {
 
         viewPagerAdapter viewPagerAdapter=new viewPagerAdapter(getSupportFragmentManager());
 
-        //viewPagerAdapter.addFragment(new ChatsFragment(),"المحادثات");
-       // viewPagerAdapter.addFragment(new UsersFragment(),"");
+        viewPagerAdapter.addFragment(new ChatsFragment(),"المحادثات");
 
         viewPager.setAdapter(viewPagerAdapter);
 
