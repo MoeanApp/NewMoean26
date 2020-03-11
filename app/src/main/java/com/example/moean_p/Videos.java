@@ -56,7 +56,7 @@ public class Videos extends AppCompatActivity implements VideoAdapter.onItemClic
     Intent intent2;
     VideoView videoView;
     public static VideoAdapter2 upload;
-    public static int position1;
+    public static int position1,pos2;
 
     BottomNavigationView bottomNavigationView;
 
@@ -251,6 +251,8 @@ public class Videos extends AppCompatActivity implements VideoAdapter.onItemClic
     @Override
     public void onDeleteClick(int position) {
 
+pos2=position;
+
         VideoAdapter2 selectedItem=mUploads.get(position);
         final String selectedKey=selectedItem.getmKey();
         StorageReference VideoRef=storage.getReferenceFromUrl(selectedItem.getVideoUrl());
@@ -275,13 +277,29 @@ public class Videos extends AppCompatActivity implements VideoAdapter.onItemClic
     ItemTouchHelper.SimpleCallback itemTouchHelperCallback =new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.RIGHT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder viewHolder1) {
+
+
             return false;
         }
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-            onDeleteClick(i);
-        }
+            VideoAdapter2 selectedItem = mUploads.get(pos2);
+            final String selectedKey = selectedItem.getmKey();
+            StorageReference VideoRef = storage.getReferenceFromUrl(selectedItem.getVideoUrl());
+            VideoRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    databaseReference.child(selectedKey).removeValue();
+                    Toast.makeText(Videos.this, "Item Deleted", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(Videos.this, "Delete Failled", Toast.LENGTH_SHORT).show();
+
+                }
+            });        }
     };
 
     @Override

@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moean_p.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 
 public class Login extends AppCompatActivity {
     EditText mEmail, mPassword;
@@ -78,15 +80,14 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-/*
+
                             String g = FirebaseDatabase.getInstance().getReference("Users")
-                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).toString();
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).toString();
                             String uidd = g.substring(41);
-                         checRole(uidd);*/
+                            checRole(uidd);
 
-
-                                    Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), WhoIsMoeanCaregiver.class));
+                            Toast.makeText(Login.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                          //  startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             //  onAuthSuccess(task.getResult().getUser());
 
 
@@ -147,43 +148,49 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
 
 
 
-   /* private void checRole(String uidd) {
+
+    private void checRole(String uidd) {
         DatabaseReference mDatabase;
-// ...
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Users").child(uidd).addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         User u = dataSnapshot.getValue(User.class);
-                     String  g = u.role;
-                        //   String ola="advisor";
-                        if(g=="advisor"){
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        String g = u.getRole();
 
 
+                        String r="advisor";
+                        String c="caregiver";
 
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        Toast.makeText(Login.this, g, Toast.LENGTH_SHORT).show();}
+                        if (g .equals(r) ) {
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                        }
+                        else if (g.equals(c)){
+                            startActivity(new Intent(getApplicationContext(), WhoIsMoeanCaregiver.class));
+
+                        }
 
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
 
 
+                });
 
-                }*/
-
-    }
-    // );
+        //}
+        // );
 
        /* private void onAuthSuccess (FirebaseUser user){
-
             //String username = usernameFromEmail(user.getEmail())
             if (user != null) {
                 //Toast.makeText(signinActivity.this, user.getUid(), Toast.LENGTH_SHORT).show();
@@ -193,49 +200,17 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String value = dataSnapshot.getValue(String.class);
-
                         if (value == "advisor") {
                             //String jason = (String) snapshot.getValue();
                             Toast.makeText(signinActivity.this, jason, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(Login.this, MainActivity.class));
                         }
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
             }
-
-
-
     }*/
-      /* private void checRole(String uidd) {
-           DatabaseReference mDatabase;
-// ...
-           mDatabase = FirebaseDatabase.getInstance().getReference();
-           mDatabase.child("Users").child(uidd).addListenerForSingleValueEvent(
-                   new ValueEventListener() {
-                       @Override
-                       public void onDataChange(DataSnapshot dataSnapshot) {
-                           User u = dataSnapshot.getValue(User.class);
-                           String  g = u.role;
-                           //   String ola="advisor";
-                           if(g=="advisor"){
 
-
-
-
-                               startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                               Toast.makeText(Login.this, g, Toast.LENGTH_SHORT).show();}
-
-                       }
-                       @Override
-                       public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                       }
-
-                   });}*/
-
-}
+    }}

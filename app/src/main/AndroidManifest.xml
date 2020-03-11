@@ -27,11 +27,11 @@
         <activity android:name=".UploadVideo" />
         <activity android:name=".AdvisorProfile" />
         <activity android:name=".Convercation" />
-        <activity android:name=".Login_or_signin" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Login" />
         <activity android:name=".Video_Play" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login_or_signin"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
